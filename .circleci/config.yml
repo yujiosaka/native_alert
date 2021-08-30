@@ -20,4 +20,10 @@ jobs:
       - run:
           name: Run Flutter unit tests
           command: flutter test
-
+      - run:
+          name: Publish package
+          command: |
+            if [ "$CIRCLE_BRANCH" = "main" ]; then
+              echo $CREDENTIALS > ~/.pub-cache/credentials.json
+              flutter pub publish --force
+            fi
