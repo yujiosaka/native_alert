@@ -2,6 +2,9 @@
 
 A Flutter plugin to trigger native alert and confirm dialogs.
 
+[![CircleCI](https://circleci.com/gh/yujiosaka/native_alert.svg?style=shield)](https://circleci.com/gh/yujiosaka/native_alert)
+
+
 ## Description
 
 Native Dialog uses the native UI on each platform to show alert and confirm dialogs.
