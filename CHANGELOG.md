@@ -16,3 +16,9 @@
 ### Changed
 
 - Apply lint.
+
+## [0.0.4] - 2021-08-31
+
+### Changed
+
+- Set up CircleCI.
