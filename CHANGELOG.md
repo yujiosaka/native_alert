@@ -10,3 +10,9 @@
 ### Changed
 
 - Fixed `README.md`.
+
+## [0.0.3] - 2021-08-31
+
+### Changed
+
+- Apply lint.

@@ -6,43 +6,43 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 class NativeDialogWeb {
   static void registerWith(Registrar registrar) {
-    final MethodChannel channel = MethodChannel(
+    final channel = MethodChannel(
       'native_dialog',
       const StandardMethodCodec(),
       registrar,
     );
 
-    final NativeDialogWeb pluginInstance = NativeDialogWeb();
+    final pluginInstance = NativeDialogWeb();
     channel.setMethodCallHandler(pluginInstance.handleMethodCall);
   }
 
   Future<dynamic> handleMethodCall(MethodCall call) async {
     switch (call.method) {
       case 'alert':
-        final message = getMessage(call.arguments);
-        return alert(message);
+        final message = _getMessage(call.arguments);
+        return _alert(message);
       case 'confirm':
-        final message = getMessage(call.arguments);
-        return confirm(message);
+        final message = _getMessage(call.arguments);
+        return _confirm(message);
       default:
         throw PlatformException(
           code: 'Unimplemented',
-          details: 'native_dialog for web doesn\'t implement \'${call.method}\'',
+          details: "native_dialog for web doesn't implement '${call.method}'",
         );
     }
   }
 
-  String getMessage(List arguments) {
+  String _getMessage(dynamic arguments) {
     return arguments.first as String;
   }
 
-  Future<void> alert(String message) {
+  Future<void> _alert(String message) {
     html.window.alert(message);
     return Future.value();
   }
 
-  Future<bool> confirm(String message) {
-    final bool result = html.window.confirm(message);
+  Future<bool> _confirm(String message) {
+    final result = html.window.confirm(message);
     return Future.value(result);
   }
 }

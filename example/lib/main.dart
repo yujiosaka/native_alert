@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 import 'package:native_dialog/native_dialog.dart';
@@ -9,6 +9,8 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({ Key? key }) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -20,7 +22,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    _textEditingController = new TextEditingController(text: _message);
+    _textEditingController = TextEditingController(text: _message);
     super.initState();
   }
 
@@ -33,8 +35,8 @@ class _MyAppState extends State<MyApp> {
   Future<void> _alert() async {
     try {
       await NativeDialog.alert(_message);
-    } on PlatformException catch (error) {
-      print(error.message);
+    } on PlatformException {
+      // Ignore error
     }
   }
 
@@ -42,12 +44,13 @@ class _MyAppState extends State<MyApp> {
     bool confirmed;
     try {
       confirmed = await NativeDialog.confirm(_message);
-    } on PlatformException catch (error) {
-      print(error.message);
+    } on PlatformException {
       confirmed = _confirmed;
     }
 
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
 
     setState(() {
       _confirmed = confirmed;
@@ -63,7 +66,6 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: double.infinity,
@@ -71,9 +73,7 @@ class _MyAppState extends State<MyApp> {
               child: TextField(
                 controller: _textEditingController,
                 decoration: InputDecoration(
-                  labelText: "Message",
-                  hintText: "Enter message here"
-                ),
+                    labelText: 'Message', hintText: 'Enter message here'),
                 autofocus: true,
                 textAlign: TextAlign.center,
                 onChanged: _handleMessage,
@@ -84,11 +84,11 @@ class _MyAppState extends State<MyApp> {
               margin: EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: _message.isNotEmpty ? _alert : null,
-                child: Text("Alert"),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                   onPrimary: Colors.white,
                 ),
+                child: Text('Alert'),
               ),
             ),
             Container(
@@ -96,11 +96,11 @@ class _MyAppState extends State<MyApp> {
               margin: EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: _message.isNotEmpty ? _confirm : null,
-                child: Text("Confirm"),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                   onPrimary: Colors.white,
                 ),
+                child: Text('Confirm'),
               ),
             ),
             Text(_confirmed ? 'Confirmed' : 'Unconfirmed'),

@@ -1,0 +1,39 @@
+include: all_lint_rules.yaml
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    # Otherwise cause the import of all_lint_rules to warn because of some rules conflicts.
+    # We explicitly enabled even conflicting rules and are fixing the conflict
+    # in this file
+    included_file_warning: ignore
+linter:
+  rules:
+    # Conflicts with `prefer_single_quotes`
+    prefer_double_quotes: false
+
+    # Conflicts with `omit_local_variable_types`
+    always_specify_types: false
+
+    # Conflicts with `prefer_final_locals`
+    unnecessary_final: false
+
+    # Conflicts with `implicit-dynamic`
+    avoid_annotating_with_dynamic: false
+
+    # Conflicts with `prefer_relative_imports`
+    always_use_package_imports: false
+
+    # Conflicts with `implicit-dynamic`
+    no_default_cases: false
+
+    # Conflicts with the convention used by flutter
+    prefer_expression_function_bodies: false
+    always_put_required_named_parameters_first: false
+    prefer_const_constructors: false
+
+    # Personal preferences
+    avoid_as: false
+    lines_longer_than_80_chars: false
+    public_member_api_docs: false
