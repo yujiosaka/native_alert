@@ -22,3 +22,9 @@
 ### Changed
 
 - Set up CircleCI.
+
+## [0.0.5] - 2021-08-31
+
+### Changed
+
+- Publish package from CircleCI
