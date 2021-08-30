@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - native_dialog (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - native_dialog (from `.symlinks/plugins/native_dialog/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  native_dialog:
+    :path: ".symlinks/plugins/native_dialog/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  native_dialog: 7336e033dbf881f4b873bf8062c14edc402f7da2
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.2
