@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: worldturtlemedia/flutter_node
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ea:05:d9:ad:b8:ed:9e:b2:f3:17:df:a0:ce:48:ec:83"
       - checkout
       - restore_cache:
           keys:
