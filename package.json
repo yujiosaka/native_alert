@@ -1,6 +1,6 @@
 {
   "name": "native_dialog",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "scripts": {
     "semantic-release": "semantic-release"
   },
@@ -21,7 +21,9 @@
   },
   "license": "MIT",
   "release": {
-    "branches": ["main"],
+    "branches": [
+      "main"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
