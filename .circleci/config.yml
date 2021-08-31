@@ -2,9 +2,18 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cirrusci/flutter
+      - image: worldturtlemedia/flutter_node
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Run Flutter doctor
           command: flutter doctor -v
@@ -22,8 +31,4 @@ jobs:
           command: flutter test
       - run:
           name: Publish package
-          command: |
-            if [ "$CIRCLE_BRANCH" = "main" ]; then
-              echo $CREDENTIALS > ~/.pub-cache/credentials.json
-              flutter pub publish --force
-            fi
+          command: npm run semantic-release

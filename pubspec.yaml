@@ -1,5 +1,5 @@
 name: native_dialog
-description: A new flutter plugin project.
+description: A Flutter plugin to trigger native alert and confirm dialogs.
 version: 0.0.5
 homepage: https://github.com/yujiosaka/native_alert
 issue_tracker: https://github.com/yujiosaka/native_alert/issues
